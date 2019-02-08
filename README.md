@@ -1,5 +1,3 @@
-# Test
-
 ## Setup Process
 
 Based on the OS you are using you may have to setup things differently. But requirements
@@ -12,7 +10,10 @@ please find alternate options to run flask, postgres, app in that OS.
 
 2. When you activate your virtual environment it uses python installed, note that python version should be 3.6.2 or above
 
-3. Clone this repo
+3. Clone this repo:
+```bash
+https://github.com/e911/FLask-Basic-CRUD-Api.git
+```
 
 4. Activate your virtual environment that you setup.
 
@@ -24,6 +25,10 @@ please find alternate options to run flask, postgres, app in that OS.
 Install postgres database. Depending on your operating system
 http://www.postgresqltutorial.com/install-postgresql/
 
+```bash
+sudo su - postgres
+```
+```postgres
 psql -d template1
 
 template1=# create database ramrios_candidate;
@@ -36,20 +41,29 @@ ramrios_dev=# alter database ramrios_candidate owner to ramrios_candidate;
 ALTER DATABASE
 
 type \q to exit from psql console
+```
 
 ### Setup Flask Backend
 
-1. activate virtual environment. If you are using pyenv eg; command below
-   pyenv activate <<your_virtual_environment>>
+1. activate virtual environment. If you are using mkvirtualenv eg; command below
+   ```bash
+   mkvirtualenv activate <<your_virtual_environment>>
+   ```
 
 2. Install dependencies
+    ```bash
     pip install -r requirements.txt
+    ```
 
 3. Create backend objects (note this will run all the migrations)
+    ```bash
     python manage.py db upgrade head
+    ```
 
 4. Run Backend server
+    ```bash
     python manage.py runserver
+    ```
 
     http://localhost:5000  is default backend API
 
@@ -61,7 +75,9 @@ Creating user: Endpoint URI: http://localhost:5000/users/create_user
 
 Curl Example: You can use any Rest client doing below
 
+```bash 
 curl -d '{"email":"you@numweb.com", "password":"topsecret"}' -H "Content-Type: application/json" -X POST http://localhost:5000/users/create_user
+```
 
 Backend table will have one record with email you@numweb.com
 
@@ -72,7 +88,9 @@ Creating appointment: Endpoint URI: http://localhost:5000/appointments/create_ap
 
 Curl Example: You can use any Rest client doing below
 
+```bash
 curl -d '{"client_name":"Pujan Thapa", "preferred_clinician":"Poojan Thapa","appointment_reason":"Business deal"}' -H "Content-Type: application/json" -X POST http://localhost:5000/appointments/create_appointment
+```
 
 Backend table will have one record.
 
